@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Bad Fox</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Titan+One&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="styles/main.css">
+
+</head>
+
+<body>
+  <% const data = locals.data %>
+
+  <h1>What does the fox say?</h1>
+  <div class="card" > 
+    <p>
+      <%= data %>
+    </p>
+  </div>
+  <img class="reset" src="/images/reset1.png" height="45px" width="45px">
+  
+  <script src="script.js"></script>
+</body>
+
+</html>
