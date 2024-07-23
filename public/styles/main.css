@@ -22,7 +22,7 @@
     font-size: 1.8rem;
   }
   .card {
-    background: url("../images/fox.jpg");
+    /* background: url("../images/fox.jpg"); */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -41,9 +41,15 @@
   }
   
   .card:hover {
-    color: #ffff00;
+    color: whitesmoke;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     transition: color 1s;
   }
+
+  .card p:hover {
+    background: rgba(0, 0, 0, 0.15);  /*Semi-transparent black background*/
+  }
+
   .card:hover:before,
   .card:hover:after {
     animation: none;

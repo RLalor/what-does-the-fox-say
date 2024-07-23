@@ -9,22 +9,26 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
 const port = process.env.PORT || 3000; // PORT FOR RENDER DEPLOYMENT
 
-// const port = 3000; // LOCAL USE PORT
-
 app.use(express.static(path.join(__dirname, "/public")));
 app.use(express.urlencoded({ extended: true }));
 app.set("views", path.join(__dirname, "/views"));
-// app.set("../views"));
 
 app.set("view engine", "ejs");
 
 app.get("/", async (req, res) => {
     try {
-      const response = await axios.get("https://evilinsult.com/generate_insult.php");
-      const result = response.data;
+      // GET INSULT DATA
+      const insultResponse = await axios.get("https://evilinsult.com/generate_insult.php");
+      const insultResult = insultResponse.data;
+
+      // GET FOX IMAGE
+      const foxResponse = await axios.get("https://randomfox.ca/floof/");
+      const result = foxResponse.data;
+      const imageUrl = result.image;
       res.render("index.ejs", {
-        data: result });
-      console.log(result);
+        imageUrl: imageUrl,
+        insultResult: insultResult,
+       });
     } catch (error) {
       console.error("Failed to make request:" , error.message);
       res.render("index.ejs", {
@@ -36,5 +40,3 @@ app.get("/", async (req, res) => {
 app.listen(port, () => {
     console.log(`Server running on port: ${port}`);
 });
-
-// uses https://evilinsult.com/api/
